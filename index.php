@@ -62,53 +62,16 @@ A função de divisão aceita dois parâmetros: a e b.
 
 */
 
-function sum($array) {
-    $res = 0;
-    foreach($array as $a) {
-        $res += $a;
-    }
-    return $res;
-}
+require_once __DIR__ . '/Math.php';
 
-function sub($array) {
-    $res = 0;
-    foreach($array as $a) {
-        $res -= $a;
-    }
-    return $res;
-}
-
-function mult($array) {
-    $res = 1;
-    foreach($array as $a) {
-        $res *= $a;
-    }
-    return $res;
-}
-
-function div($array) {
-    try{
-        $res = $array['a'] / $array['b'];
-    }
-    catch(DivisionByZeroError $e) {
-        echo 'Error: ' . $e->getMessage();
-    }
-    return $res;
-}
-
-$func = [
-    'sum' => array_map('sum', [[1,2,3]]), 
-    'sub' => array_map('sub', [[6,4,2]]), 
-    'mult' => array_map('mult', [[1,2,3]]), 
-    'div' => array_map('div', [['a'=> 4, 'b' => 2]])
-];
-
-foreach($func as $k => $v) {
-    echo $k;
-    echo "<br>";
-    print_r($v);
-    echo "<br><br>";
-}
+$math = new Math();
+echo "Soma: " . $math->sum([4, 3, 2]);
+echo "<br>";
+echo "Subtracao: " . $math->sub([4, 3, 2]);
+echo "<br>";
+echo "Multiplicacao: " . $math->mult([4, 3, 2]);
+echo "<br>";
+echo "Divisao: " . $math->div(4, 2);
 
 echo '<br>----------------<br>';
 
